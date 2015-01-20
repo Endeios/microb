@@ -1,0 +1,735 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.microbIA.org/resource/onto#"
+     xml:base="http://www.microbIA.org/resource/onto"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.microbIA.org/resource/onto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#CuraTramite -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#CuraTramite"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#haForma -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#haForma">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.microbIA.org/resource/onto#possiedeCaratteristiche"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#isA -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#isA">
+        <rdfs:subPropertyOf rdf:resource="http://www.microbIA.org/resource/onto#haForma"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#possiedeCaratteristiche -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#possiedeCaratteristiche">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#possiedeCaratteristiche"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#Battere"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#possiedeCaratteristiche"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#provoca -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#provoca"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#solidificaTramite -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#solidificaTramite"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#utilizza -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#utilizza">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#utilizzatoPerCurare -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#utilizzatoPerCurare">
+        <owl:inverseOf rdf:resource="http://www.microbIA.org/resource/onto#CuraTramite"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#utilizzatoPerEffettuare -->
+
+    <owl:ObjectProperty rdf:about="http://www.microbIA.org/resource/onto#utilizzatoPerEffettuare"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#ovvero -->
+
+    <owl:DatatypeProperty rdf:about="http://www.microbIA.org/resource/onto#ovvero"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Antibiogramma -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Antibiogramma">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#utilizza"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#Battere"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#utilizza"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#Antibiotico"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Antibiotico -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Antibiotico">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#utilizzatoPerCurare"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#MalattiaBatterica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#utilizzatoPerEffettuare"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#Antibiogramma"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Battere -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Battere">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Microrganismi"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#possiedeCaratteristiche"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#provoca"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#MalattiaBatterica"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Campione -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Campione">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#EstrazioneCampioni"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#CaratteristicheBattere -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Classificazione -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Classificazione">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Terreno"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#ClassificazioneMalattieBatteriche -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#ClassificazioneMalattieBatteriche">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#MalattiaBatterica"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#ClassificazioneQualitativa -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#ClassificazioneQualitativa">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Terreno"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Cocco -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Cocco">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#FormaBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Commensale -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Commensale">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Battere"/>
+        <owl:disjointWith rdf:resource="http://www.microbIA.org/resource/onto#Patogeno"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#CorpoUmano -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#CorpoUmano">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#EstrazioneCampioni -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#EstrazioneCampioni">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CorpoUmano"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#FormaBattere -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#FormaBattere">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#IdentificazioneBatterica -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#IdentificazioneBatterica">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Lievito -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Lievito">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Microrganismi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#MalattiaBatterica -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#MalattiaBatterica">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.microbIA.org/resource/onto#CuraTramite"/>
+                <owl:someValuesFrom rdf:resource="http://www.microbIA.org/resource/onto#Antibiotico"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Microrganismi -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Microrganismi"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Muffa -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Muffa">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Microrganismi"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Patogeno -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Patogeno">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Battere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Preparazione -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Preparazione">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Terreno"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#ReazioneGram -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#ReazioneGram">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Riproduzione -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Riproduzione">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Semina -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Semina"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#StrumentiPerEstrazione -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#StrumentiPerEstrazione">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#EstrazioneCampioni"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#Terreno -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#Terreno">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#IdentificazioneBatterica"/>
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#TerrenoDiColtura -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#TerrenoDiColtura"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#TipiDiSemina -->
+
+    <owl:Class rdf:about="http://www.microbIA.org/resource/onto#TipiDiSemina">
+        <rdfs:subClassOf rdf:resource="http://www.microbIA.org/resource/onto#Semina"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#acqua -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#acqua">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#agar -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#agar"/>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#agarABeccoDiClarino -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#agarABeccoDiClarino">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#TipiDiSemina"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#alimenti -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#alimenti">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#aria -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#aria">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#LuoghiInCuiSiSviluppano"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#arricchimento -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#arricchimento">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneQualitativa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#bacillo -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#bacillo">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#FormaBattere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#biochimica -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#biochimica">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#IdentificazioneBatterica"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#bisturi -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#bisturi">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#StrumentiPerEstrazione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#differenziale -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#differenziale">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneQualitativa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#diplococco -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#diplococco">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Cocco"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#elettivo -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#elettivo">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneQualitativa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#escherichiacoli -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#escherichiacoli">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Battere"/>
+        <haForma rdf:resource="http://www.microbIA.org/resource/onto#streptococco"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#faringe -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#faringe">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#feci -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#feci">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#incursione -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#incursione">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#TipiDiSemina"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#infettiva -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#infettiva">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneMalattieBatteriche"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#infissione -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#infissione">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#TipiDiSemina"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#isolamento -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#isolamento">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#TipiDiSemina"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#liquido -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#liquido">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Classificazione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#microscopia -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#microscopia">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#IdentificazioneBatterica"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#molecolare -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#molecolare">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#IdentificazioneBatterica"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#naso -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#naso">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#negativa -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#negativa">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ReazioneGram"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#nonInfettiva -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#nonInfettiva">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneMalattieBatteriche"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#positiva -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#positiva">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ReazioneGram"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#procariote -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#procariote">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#CaratteristicheBattere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#sangue -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#sangue">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#scissioneBinaria -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#scissioneBinaria">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Riproduzione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#selettivo -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#selettivo">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#ClassificazioneQualitativa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#solido -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#solido">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Classificazione"/>
+        <solidificaTramite rdf:resource="http://www.microbIA.org/resource/onto#agar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#spatolamento -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#spatolamento">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#TipiDiSemina"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#spetttrometriaDiMassa -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#spetttrometriaDiMassa">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#IdentificazioneBatterica"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#spirillo -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#spirillo">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#FormaBattere"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#stafilocco -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#stafilocco">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Cocco"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#stomaco -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#stomaco">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#streptococco -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#streptococco">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Cocco"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#tampone -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#tampone">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#StrumentiPerEstrazione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#terreniDiCultura -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#terreniDiCultura">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Terreno"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#urine -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#urine">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#Campione"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.microbIA.org/resource/onto#vibrione -->
+
+    <owl:NamedIndividual rdf:about="http://www.microbIA.org/resource/onto#vibrione">
+        <rdf:type rdf:resource="http://www.microbIA.org/resource/onto#FormaBattere"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+
