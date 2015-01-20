@@ -128,7 +128,7 @@ $(document).ready(function(){
 </script>            
 
 
-ciao 
+ciao  
 		   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
 			    <div class="list-group" id = "lista">
 					    <a href="#" class="list-group-item active" id="link">Link  </a>
